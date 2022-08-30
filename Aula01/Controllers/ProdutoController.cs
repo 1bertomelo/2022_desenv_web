@@ -23,8 +23,25 @@ namespace Aula01.Controllers
 		[HttpPost]
 		public IActionResult Cadastrar(Produto produto)
 		{
+			if (!produto.EhValido())
+				return BadRequest(new
+				{
+					success = false,
+					message = "Existe(m) erro(s)",
+					erros = produto.validationResult.Errors.Select(e => e.ErrorMessage).ToArray()
+				});
+
+			//if (produto.Estoque < 0)
+			//	return BadRequest("Produto não pode ter estoque negativo");
+		
+			//if(produto.Preco < 0)
+			//	return BadRequest("Produto não pode ter preço negativo");
+		
+			//if (string.IsNullOrEmpty(produto.Nome.Trim()))
+			//	return BadRequest("Produto deve ter um nome");
+
 			produtosList.Add(produto);
-;			return Ok(produto);
+			return Ok(produto);
 		}
 
 		[HttpPut]
