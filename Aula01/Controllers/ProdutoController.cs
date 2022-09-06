@@ -17,7 +17,7 @@ namespace Aula01.Controllers
 
 		[HttpPost]
 		public IActionResult Cadastrar(Produto produto)
-		{
+		{ 
 			//_produtoRepository.Adicionar();
 			return Ok(produto);
 		}

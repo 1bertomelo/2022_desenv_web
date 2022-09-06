@@ -23,5 +23,5 @@ namespace Aula01.Domain
 			validationResult = new ProdutoValidation().Validate(this);
 			return validationResult.IsValid;
 		}
-	}
+	} 
 }

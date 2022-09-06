@@ -21,7 +21,7 @@ namespace Aula01.Data.Repository
 		public void Adicionar(Produto produto)
 		{
 			ListaProduto.Add(produto);
-		}
+		} 
 
 		public IEnumerable<Produto> ObterTodos()
 		{
