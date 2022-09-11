@@ -14,8 +14,8 @@ namespace Aula01.Data.Repository
 		public ProdutoRepository()
 		{
 			ListaProduto = new List<Produto>();
-			ListaProduto.Add(new Produto() { Id = 1, Nome = "X", Estoque = 10, Preco = 20M });
-			ListaProduto.Add(new Produto() { Id = 2, Nome = "Y", Estoque = 20, Preco = 30M });
+			ListaProduto.Add(new Produto(1,  "X",  10M,  20));
+			ListaProduto.Add(new Produto(2, "Y", 20M, 30));
 
 		}
 		public void Adicionar(Produto produto)

@@ -32,5 +32,5 @@ namespace Aula01.Domain.Validations
 				.WithMessage("Preco não pode ser negativo");
 
 		}
-	}
+	} 
 }

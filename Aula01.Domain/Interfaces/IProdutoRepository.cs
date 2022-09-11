@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Aula01.Domain.Interfaces
 {
 	public interface IProdutoRepository
-	{
+	{ 
 		public void Adicionar(Produto produto);
 		public void Atualizar(Produto produto);
 		public void Remover(int id);
