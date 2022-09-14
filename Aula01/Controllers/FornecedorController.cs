@@ -1,5 +1,6 @@
 ﻿using Aula01.Domain.Interfaces;
 using Aula01.Model;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aula01.Controllers
@@ -7,17 +8,21 @@ namespace Aula01.Controllers
 	public class FornecedorController : Controller
 	{
 		private readonly IFornecedorRepository _fornecedorRepository;
-
-		public FornecedorController(IFornecedorRepository fornecedorRepository)
+		private IMapper _mapper;
+		public FornecedorController(
+			IFornecedorRepository fornecedorRepository,
+			IMapper mapper
+		)
 		{
 			_fornecedorRepository = fornecedorRepository;
+			_mapper = mapper;
 		}
 
 		[HttpPost]
 		public IActionResult Cadastrar(FornecedorViewModel fornecedorViewModel)
 		{
 			if (!ModelState.IsValid) return BadRequest(ModelState);
-		//	_fornecedorRepository.Adicionar();
+			_fornecedorRepository.Adicionar();
 
 			return Ok();
 		}

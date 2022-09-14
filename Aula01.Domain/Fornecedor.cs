@@ -9,6 +9,14 @@ namespace Aula01.Domain
 {
 	public class Fornecedor
 	{
+		public Fornecedor(string nome, EnumTipoFornecedor tipoFornecedor, string documento, bool ativo)
+		{
+			Nome = nome;
+			TipoFornecedor = tipoFornecedor;
+			Documento = documento;
+			Ativo = ativo;
+		}
+
 		public int Id { get; private set; }
 		public string Nome { get; private set; }
 		public EnumTipoFornecedor TipoFornecedor { get; private set; }
