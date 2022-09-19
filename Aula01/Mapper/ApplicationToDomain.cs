@@ -11,6 +11,12 @@ namespace Aula01.Mapper
 
 			CreateMap<ProdutoViewModel, Produto>()
 			   .ConstructUsing(q => new Produto(q.Id,q.Nome, q.Preco, q.Estoque));
+
+
+			CreateMap<FornecedorViewModel, Fornecedor>()
+				.ConstructUsing(f =>
+				new Fornecedor(
+					f.Nome, f.TipoFornecedor, f.Documento,f.Ativo));
 		}
 	}
 }
