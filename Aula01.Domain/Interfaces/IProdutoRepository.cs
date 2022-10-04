@@ -10,8 +10,8 @@ namespace Aula01.Domain.Interfaces
 	{ 
 		public void Adicionar(Produto produto);
 		public void Atualizar(Produto produto);
-		public void Remover(int id);
-		public Produto ObterProdutoId(int id);
+		public void Remover(Guid id);
+		public Produto ObterProdutoId(Guid id);
 		public IEnumerable<Produto> ObterProdutoName(string name);
 		public IEnumerable<Produto> ObterTodos();
 

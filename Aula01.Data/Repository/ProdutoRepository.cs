@@ -10,44 +10,55 @@ namespace Aula01.Data.Repository
 {
 	public class ProdutoRepository : IProdutoRepository
 	{
-		private List<Produto> ListaProduto;
-		public ProdutoRepository()
-		{
-			ListaProduto = new List<Produto>();
-			ListaProduto.Add(new Produto(1,  "X",  10M,  20));
-			ListaProduto.Add(new Produto(2, "Y", 20M, 30));
+		private readonly GestaoProdutoContext _context;
 
+		public ProdutoRepository(GestaoProdutoContext context)
+		{
+			_context = context;
 		}
+
 		public void Adicionar(Produto produto)
 		{
-			ListaProduto.Add(produto);
+			_context.Produtos.Add(produto);
+			Gravar();
 		} 
 
 		public IEnumerable<Produto> ObterTodos()
 		{
-			return ListaProduto;
+			return _context.Produtos.ToList();
 		}
 
 		public void Atualizar(Produto produto)
 		{
-			throw new NotImplementedException();
+			_context.Produtos.Update(produto);
+			Gravar();
 		}
 
-		public Produto ObterProdutoId(int id)
+		public Produto ObterProdutoId(Guid id)
 		{
-			throw new NotImplementedException();
+			return _context.Produtos.Where(p => p.Id == id).FirstOrDefault();
 		}
 
 		public IEnumerable<Produto> ObterProdutoName(string name)
 		{
-			throw new NotImplementedException();
+			return _context.Produtos.Where(p => p.Nome == name);
 		}
 
 		
 
-		public void Remover(int id)
+		public void Remover(Guid id)
 		{
-			throw new NotImplementedException();
+			_context.Remove(id);
+		}
+
+		private void Gravar()
+		{
+			_context.SaveChanges();
+		}
+
+		public void Dispose()
+		{
+			_context.Dispose();
 		}
 	}
 }

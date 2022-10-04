@@ -37,7 +37,7 @@ namespace Aula01.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult ObterPorId(int id)
+		public IActionResult ObterPorId(Guid id)
 		{
 			var pesquisa = _mapper.Map<ProdutoViewModel>(_produtoRepository.ObterProdutoId(id));
 			if (pesquisa == null) return NotFound();
