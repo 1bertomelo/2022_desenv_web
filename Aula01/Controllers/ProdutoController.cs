@@ -22,11 +22,19 @@ namespace Aula01.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Cadastrar(ProdutoViewModel produto)
+		public async Task<IActionResult> Cadastrar([FromForm] ProdutoViewModel produtoViewModel)
 		{
+			var imagemNome = Guid.NewGuid() + "_" + produtoViewModel.file.FileName;
+			produtoViewModel.Imagem = imagemNome;
+
 			if (!ModelState.IsValid) return BadRequest(ModelState);
 
-			_produtoRepository.Adicionar(_mapper.Map<Produto>(produto));
+			if (!await UploadArquivo(produtoViewModel.file, imagemNome))
+			{
+				return BadRequest( new { success = false, mensagem = "Erro ao subir a imagem" }) ;
+			}
+
+			_produtoRepository.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 			return Ok(new { success = true, mensagem = "Inserido com sucesso" });
 		}
 
@@ -62,5 +70,25 @@ namespace Aula01.Controllers
 				);
 		}
 
+
+
+		private async Task<bool> UploadArquivo(IFormFile arquivo, string imgNome)
+		{
+			
+			if (arquivo == null || arquivo.Length == 0)
+			{
+				return false;
+			}
+
+			var path = Path.Combine(Directory.GetCurrentDirectory(), "Content/Images", imgNome);
+
+
+			using (var stream = new FileStream(path, FileMode.Create))
+			{
+				await arquivo.CopyToAsync(stream);
+			}
+
+			return true;
+		}
 	}
 }

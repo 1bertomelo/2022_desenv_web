@@ -10,7 +10,7 @@ namespace Aula01.Mapper
 		{
 
 			CreateMap<ProdutoViewModel, Produto>()
-			   .ConstructUsing(q => new Produto(q.Nome, q.Preco, q.Estoque));
+			   .ConstructUsing(q => new Produto(q.Nome, q.Preco, q.Estoque, q.Imagem));
 
 
 			CreateMap<FornecedorViewModel, Fornecedor>()
