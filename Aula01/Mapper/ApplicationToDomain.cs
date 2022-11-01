@@ -17,6 +17,9 @@ namespace Aula01.Mapper
 				.ConstructUsing(f =>
 				new Fornecedor(
 					f.Nome, f.TipoFornecedor, f.Documento,f.Ativo));
+
+			CreateMap<UsuarioViewModel, Usuario>()
+			   .ConstructUsing(q => new Usuario(q.UserName, q.Password));
 		}
 	}
 }

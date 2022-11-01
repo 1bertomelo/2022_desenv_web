@@ -2,6 +2,7 @@
 using Aula01.Domain.Interfaces;
 using Aula01.Model;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aula01.Controllers
@@ -21,6 +22,7 @@ namespace Aula01.Controllers
 			_mapper = mapper;
 		}
 
+		[Authorize]
 		[HttpPost]
 		public async Task<IActionResult> Cadastrar([FromForm] ProdutoViewModel produtoViewModel)
 		{

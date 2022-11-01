@@ -9,6 +9,7 @@ namespace Aula01.Mapper
 		public DomainToApplication()
 		{
 			CreateMap<Produto, ProdutoViewModel>();
+			CreateMap<Usuario, UsuarioViewModel>();
 			CreateMap<Fornecedor, FornecedorViewModel>();
 		}		
 	}
