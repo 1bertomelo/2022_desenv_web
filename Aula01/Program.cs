@@ -2,6 +2,7 @@ using Aula01.Data;
 using Aula01.Data.Repository;
 using Aula01.Domain.Interfaces;
 using Aula01.Mapper;
+using Aula01.Services;
 using Aula01.Token;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +61,7 @@ builder.Services.AddDbContext<GestaoProdutoContext>(o => o.UseInMemoryDatabase("
 builder.Services.AddAutoMapper(typeof(DomainToApplication), typeof(ApplicationToDomain));
 
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 

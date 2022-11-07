@@ -19,7 +19,8 @@ namespace Aula01.Data.Repository
 		}
 		public Usuario Autenticar(Usuario usuario  )
 		{
-			if(usuario.UserName == "humberto" && usuario.Password == "123456789")
+			if(usuario.UserName == "humberto" 
+				&& usuario.Password == "123456789")
 			{
 				return new Usuario(usuario.UserName, usuario.Password);
 			}
