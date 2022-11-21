@@ -30,21 +30,22 @@ namespace Aula01.Services
 
 			_produtoRepository.Adicionar(_mapper.Map<Produto>(produtoViewModel));
 		}
-
+		public ProdutoViewModel ObterProdutoId(Guid id)
+		{
+			return _mapper.Map<ProdutoViewModel>(_produtoRepository.ObterProdutoId(id));
+		}
+		public IEnumerable<ProdutoViewModel> ObterProdutoName(string name)
+		{
+			throw new NotImplementedException();
+		}
 		public void Atualizar(ProdutoViewModel produto)
 		{
 			throw new NotImplementedException();
 		}
 
-		public ProdutoViewModel ObterProdutoId(Guid id)
-		{
-			return _mapper.Map<ProdutoViewModel>(_produtoRepository.ObterProdutoId(id));
-		}
+	
 
-		public IEnumerable<ProdutoViewModel> ObterProdutoName(string name)
-		{
-			throw new NotImplementedException();
-		}
+		
 
 		public IEnumerable<ProdutoViewModel> ObterTodos()
 		{
